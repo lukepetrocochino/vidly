@@ -102,7 +102,7 @@ class Movies extends Component {
             <Link to="/movies/new" className="btn btn-primary gap">
               New Movie
             </Link>
-            <p>Showing {totalCount} movies in the database.</p>
+            <p>Showing {totalCount} movies in the database    .</p>
             <SearchBox value={searchQuery} onChange={this.handleSearch} />
             <MoviesTable
               movies={movies}
