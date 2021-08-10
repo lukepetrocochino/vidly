@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import Button from 'react-bootstrap/Button'
 import MoviesTable from "./moviesTable";
 import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import { paginate } from "../utils/paginate";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SearchBox from "./common/searchBox";
 import _ from "lodash";
 
@@ -99,10 +100,16 @@ class Movies extends Component {
             />
           </div>
           <div className="col">
-            <Link to="/movies/new" className="btn btn-primary gap">
+
+            {/* Using React-Bootstrap to create New Movies button: */}
+            <Button className="gap" href="/movies/new" variant='primary' >New Movie</Button>
+
+            {/* Using Bootstrap to create New Movies button (Link styled as button) */}
+            {/* <Link to="/movies/new" className="btn btn-primary gap">
               New Movie
-            </Link>
-            <p>Showing {totalCount} movies in the database    .</p>
+            </Link> */}
+
+            <p>Showing {totalCount} movies in the database.</p>
             <SearchBox value={searchQuery} onChange={this.handleSearch} />
             <MoviesTable
               movies={movies}

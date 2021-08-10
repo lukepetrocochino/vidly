@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
 import Select from "./select";
+import Button from "react-bootstrap/Button";
 
 class Form extends Component {
   state = {
@@ -18,6 +19,12 @@ class Form extends Component {
     for (let item of error.details) errors[item.path[0]] = item.message;
     return errors;
   };
+
+  validateButton = () => {
+    const res = this.validate();
+    return res ? true : false;
+  };
+
   validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
     const schema = { [name]: this.schema[name] };
@@ -47,10 +54,21 @@ class Form extends Component {
   };
 
   renderButton(label) {
+    // Button rendered using bootstrap:
+
+    //   return (
+    //     <button disabled={this.validate()} className="btn btn-primary">
+    //       {label}
+    //     </button>
+    //   )
+    // }
+
+    // Button rendered using React-bootstrap:
+
     return (
-      <button disabled={this.validate()} className="btn btn-primary">
-        {label}
-      </button>
+      <Button disabled={this.validateButton()} variant="primary">
+        {label} 
+      </Button>
     );
   }
 
